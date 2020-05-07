@@ -35,8 +35,23 @@ gem 'devise'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+#image uploads AWS
+gem 'carrierwave', '~> 2.1'
+gem 'fog-aws', '~> 3.6', '>= 3.6.3'
+#gem 'fog', '~> 2.2'
+
+
+#Image uploads cloudinary
+gem 'cloudinary', '~> 1.14'
+
+
+# image resize
+gem 'mini_magick', '~> 4.10', '>= 4.10.1'
+
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
+
+gem 'dotenv-rails', groups: [:development, :test]
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -50,6 +65,10 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+
+  # Local ENV vars
+  gem 'figaro'
+
 end
 
 group :test do
