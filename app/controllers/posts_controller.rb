@@ -1,0 +1,28 @@
+class PostsController < ApplicationController
+  def new
+    @post = Post.new
+  end
+
+  def create
+    @post = Post.new(post_params)
+
+
+    if @post.save
+
+      redirect_to dashboard_path, flash: { success: "A sua queixa foi criada"}
+
+    else
+
+      redirect_to new_post_path, flash: { danger: "A sua queixa não foi criada!"}
+    end
+  end
+
+  def show
+  end
+
+  private
+
+  def post_params
+    params.require(:post).permit(:image)
+  end
+end

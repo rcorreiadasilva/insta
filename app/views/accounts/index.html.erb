@@ -1,1 +1,14 @@
+<div class="container">
+  <div class="row">
+    <div class="col-8">
+    <% @posts.each do |post| %>
+        <%= post.account.username %>
+        <%= cl_image_tag post.image.key, width: 400, height: 300, crop: :fill, class: "img img-fluid" %>
+    <% end %>
+
+    </div>
+
+  </div>
+
+</div>
 

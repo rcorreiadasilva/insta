@@ -13,6 +13,13 @@ gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 gem 'bootstrap-sass', '~> 3.4', '>= 3.4.1'
+
+# simple form
+
+gem 'simple_form', '~> 5.0', '>= 5.0.2'
+
+#font awsome
+gem 'font-awesome-sass', '~> 5.12.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
@@ -36,8 +43,8 @@ gem 'devise'
 # gem 'capistrano-rails', group: :development
 
 #image uploads AWS
-gem 'carrierwave', '~> 2.1'
-gem 'fog-aws', '~> 3.6', '>= 3.6.3'
+#gem 'carrierwave', '~> 2.1'
+#gem 'fog-aws', '~> 3.6', '>= 3.6.3'
 #gem 'fog', '~> 2.2'
 
 
