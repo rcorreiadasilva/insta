@@ -1,21 +1,43 @@
 <div class="container">
   <div class="row">
     <div class="col-4">
-
+      <% if @account.image.attached? %>
+        <%= cl_image_tag @account.image.key, width: 150, height: 150, class: "rounded-circle"%>
+      <% else %>
+         <%= image_tag "https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png", width: 150, height: 150, class: "rounded-circle"%>
+      <% end %>
     </div>
       <div class="col-8 text-left">
-        <h1><%= current_account.full_name %></h1>
+        <h1><%= @account.full_name %></h1> <p><%= @account.username %></p>
+        <%= link_to "Editar", edit_account_registration_path, class:"btn btn-secondary" %>
         <div class="profile-stats">
-          <%= current_account.posts.count %> reclamações
+          <%= @account.posts.count %> reclamações
         </div>
         <div class="profile-stats">
-          <%= current_account.total_followers %> resolvidas
+          <%= @account.total_followers %> resolvidas
         </div>
         <div class="profile-stats">
-          <%= current_account.total_following %> pendentes
+          <%= @account.total_following %> pendentes
         </div>
-        <p></p>
+        <p><%= @account.full_name  %></p>
+       <%= simple_format @account.description  %>
+        <p><%= link_to @account.website if @account.website.present? %></p>
       </div>
+  </div>
+
+  <div class="row profile-posts">
+
+      <% @posts.each do |post| %>
+      <div class="col-4">
+        <div class="insta-post">
+          <% if post.image.attached? %>
+          <%= cl_image_tag post.image.key, width: 400, height: 300, crop: :fill, class: "img img-fluid" %>
+          <% end %>
+          <%= post.description %>
+        </div>
+      </div>
+
+      <% end %>
   </div>
 
 </div>

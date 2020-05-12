@@ -4,9 +4,34 @@
     <% @posts.each do |post| %>
       <div class="insta-post">
         <div class="post-meta">
-         <%= post.account.username %>
+          <% if post.account.image.attached? %>
+         <%= cl_image_tag post.account.image.key, width: 25, height: 25, class: "rounded-circle"  %>
+          <% else %>
+         <%=  image_tag "https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png", width: 25, height: 25, class: "rounded-circle"%>
+
+         <% end %>
+         <%= link_to post.account.username,profile_path(post.account.username), class: "text-dark" %>
         </div>
+        <% if post.image.attached? %>
         <%= cl_image_tag post.image.key, width: 400, height: 300, crop: :fill, class: "img img-fluid" %>
+        <% end %>
+
+
+
+        <div class="post-details">
+          <div class="post-actions">
+            <i class="fa fa-2x fa-heart like-<%= post.id%> <%= 'active' if post_liked_by_user?(post.id) %> post-like " onclick="this.style.backgroundColor = '#fafafa'; this.style.color = '#eeee00';"data-id="<%= post.id %>"></i>
+           <i class="fa fa-2x fa-square card-<%= post.id %> post-card" data-id="<%= post.id %>"></i>
+           <i class="fa fa-2x fa-comment  post-comment"></i>
+          </div>
+
+          <p><strong><%= post.total_likes %>likes</strong></p>
+          <p><strong><%= post.total_cards %>cartões amarelos</strong></p>
+          <p><strong><%= link_to post.account.username,profile_path(post.account.username), class: "text-dark" %> </strong></p>
+            <%= simple_format post.description %>
+            <p class="text-muted"><%= time_ago_in_words post.created_at %> atrás</p>
+
+        </div>
 
       </div>
     <% end %>
@@ -15,11 +40,20 @@
 
     <div class="col-4">
       <div class="account-summary">
-        <p><strong> <%= current_account.username %></strong> <br/>
-
-        <%= current_account.full_name %></p>
+        <p>
+           <% if current_account.image.attached? %>
+          <%= cl_image_tag current_account.image.key, width: 25, height: 25, class: "rounded-circle"  %>
+           <% else %>
+          <%=  image_tag "https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png", width: 25, height: 25, class: "rounded-circle"%>
+          <% end %>
+          <strong> <%= current_account.username %></strong>
+          </p>
+        <p><%= current_account.full_name %></p>
       </div>
       <div class="suggestions">
+        <%= link_to "Ver Tudo","#",class: "float-right text-dark" %>
+
+        <p class="text-muted">Top Reclamações </p>
 
       </div>
 
@@ -29,3 +63,6 @@
 
 </div>
 
+<%# if @user.avatar.attached? %>
+  <%#= image_tag @user.avatar.variant(resize_to_limit: [100, 100])%>
+<%# end %>

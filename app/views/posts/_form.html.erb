@@ -3,9 +3,15 @@
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
   <!-- <div class="form-inputs"> -->
+<div class="form-group">
+  <%= f.input :image, as: :file %>
+  <%#= f.input :some_image_field, as: :image_preview, input_html: {preview_version: :thumb} %>
+</div>
 
-<%= f.input :image, as: :file %>
-<%#= f.input :some_image_field, as: :image_preview, input_html: {preview_version: :thumb} %>
+<div class="form-group">
+  <%= f.input :description, label: "Reclamação" %>
+</div>
+
 
  <!--  </div> -->
 

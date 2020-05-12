@@ -15,4 +15,5 @@
 //= require activestorage
 //= require turbolinks
 //= require bootstrap.min
+//= require fontawesome.min
 //= require_tree .

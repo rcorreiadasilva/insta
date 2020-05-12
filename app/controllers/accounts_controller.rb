@@ -5,10 +5,12 @@ before_action :set_account, only: [:profile]
   def index
     #user dashboard - post feed
     @posts = Post.active
+
   end
 
   def profile
     # user profile
+    @posts = current_account.posts.active
   end
 
 

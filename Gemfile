@@ -13,7 +13,9 @@ gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 gem 'bootstrap-sass', '~> 3.4', '>= 3.4.1'
-
+gem 'webpacker'
+# font awesome
+#gem 'font-awesome-sass', '~> 5.12'
 # simple form
 
 gem 'simple_form', '~> 5.0', '>= 5.0.2'

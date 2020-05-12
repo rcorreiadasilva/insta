@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_07_214147) do
+ActiveRecord::Schema.define(version: 2020_05_11_164258) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,6 +31,9 @@ ActiveRecord::Schema.define(version: 2020_05_07_214147) do
     t.string "username", limit: 20
     t.string "first_name", limit: 20
     t.string "last_name", limit: 20
+    t.string "image"
+    t.text "description"
+    t.string "website"
     t.index ["email"], name: "index_accounts_on_email", unique: true
     t.index ["reset_password_token"], name: "index_accounts_on_reset_password_token", unique: true
   end
@@ -56,12 +59,32 @@ ActiveRecord::Schema.define(version: 2020_05_07_214147) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
+  create_table "cards", force: :cascade do |t|
+    t.bigint "account_id"
+    t.bigint "post_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["account_id"], name: "index_cards_on_account_id"
+    t.index ["post_id"], name: "index_cards_on_post_id"
+  end
+
+  create_table "likes", force: :cascade do |t|
+    t.bigint "account_id"
+    t.bigint "post_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["account_id"], name: "index_likes_on_account_id"
+    t.index ["post_id"], name: "index_likes_on_post_id"
+  end
+
   create_table "posts", force: :cascade do |t|
     t.string "image"
     t.boolean "active"
     t.bigint "account_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "description"
+    t.integer "total_likes_count"
     t.index ["account_id"], name: "index_posts_on_account_id"
   end
 
