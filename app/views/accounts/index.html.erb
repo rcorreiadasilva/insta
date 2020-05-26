@@ -20,7 +20,7 @@
 
         <div class="post-details">
           <div class="post-actions">
-            <i class="fa fa-2x fa-heart like-<%= post.id%> <%= 'active' if post_liked_by_user?(post.id) %> post-like " onclick="this.style.backgroundColor = '#fafafa'; this.style.color = '#eeee00';"data-id="<%= post.id %>"></i>
+            <i class="fa fa-2x fa-heart like-<%= post.id%> <%= 'active' if post_liked_by_user(post.id) %> post-like " onclick="this.style.backgroundColor = '#fafafa'; this.style.color = '#eeee00';"data-id="<%= post.id %>"></i>
            <i class="fa fa-2x fa-square card-<%= post.id %> post-card" data-id="<%= post.id %>"></i>
            <i class="fa fa-2x fa-comment  post-comment"></i>
           </div>
