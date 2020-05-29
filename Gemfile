@@ -9,7 +9,8 @@ gem 'rails', '~> 5.2.4', '>= 5.2.4.2'
 #gem 'sqlite3'
 gem 'pg', '~> 1.2', '>= 1.2.3'
 # Use Puma as the app server
-gem 'puma', '~> 3.11'
+#gem 'puma', '~> 3.11'
+gem 'puma', '>= 3.12.6'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 gem 'bootstrap-sass', '~> 3.4', '>= 3.4.1'
@@ -17,9 +18,10 @@ gem 'webpacker'
 # font awesome
 #gem 'font-awesome-sass', '~> 5.12'
 # simple form
-
+gem 'activesupport', '>= 5.2.4.3'
 gem 'simple_form', '~> 5.0', '>= 5.0.2'
-
+gem 'actionpack', '>= 5.2.4.3'
+gem 'activestorage', '>= 5.2.4.3'
 #font awsome
 gem 'font-awesome-sass', '~> 5.12.0'
 # Use Uglifier as compressor for JavaScript assets
